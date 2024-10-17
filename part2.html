@@ -29,6 +29,11 @@
             cursor: pointer;
             margin-top: 20px;
         }
+        #date {
+            border: none;
+            background-color: transparent;
+            cursor: default;
+        }
     </style>
 </head>
 <body>
@@ -50,15 +55,15 @@
 
         <p>You may file a complaint against a dental practice that does not follow both the requirements of this notice and the Illinois Dental Practice Act by contacting the Illinois Department of Financial and Professional Regulation (IDFPR) at <a href="http://www.IDFPR.Illinois.gov" target="_blank">www.IDFPR.Illinois.gov</a>, or by calling 312-814-6910.</p>
 
-        <p>[Patient's Signature: <span id="customerFullNameSpan"></span>]</p>
-        <p>[Date: <input type="date" id="date" required>]</p>
+        <p>Patient's Signature: <span id="customerFullNameSpan"></span></p>
+        <p>Date: <span id="date"></span></p>
 
         <div class="checkbox">
             <input type="checkbox" id="acknowledge" required> 
             <label for="acknowledge">I acknowledge that checking this box constitutes my electronic signature.</label>
         </div>
 
-        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="submitForm()">Next</button>
     </div>
 
     <script>
@@ -72,9 +77,9 @@
         document.getElementById('acknowledge').addEventListener('change', function() {
             if (this.checked) {
                 const today = new Date().toISOString().split('T')[0];
-                document.getElementById('date').value = today;
+                document.getElementById('date').innerText = today;
             } else {
-                document.getElementById('date').value = "";  // Clear the date if unchecked
+                document.getElementById('date').innerText = "";  // Clear the date if unchecked
             }
         });
 
