@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 - Legal Disclosure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .disclosure-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkbox {
+            margin-top: 20px;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="disclosure-container">
+        <h2>DENTAL SERVICES FINANCING DISCLOSURE</h2>
+        <p>The application you are about to fill out is your application for a CREDIT CARD, LINE OF CREDIT, OR LOAN to help you finance or pay for your dental treatment. You should know that:</p>
+
+        <p><strong>YOU ARE APPLYING FOR A CREDIT CARD, LINE OF CREDIT, OR A LOAN FOR $<span id="treatmentAmountSpan"></span>.</strong></p>
+
+        <p>The CREDIT CARD, LINE OF CREDIT, OR LOAN YOU ARE APPLYING FOR IS NOT A PAYMENT PLAN WITH THE DENTIST'S OFFICE. It is a credit card, line of credit, or loan from Health Finance Direct. Your dentist does not work for this company.</p>
+
+        <p>You do not have to apply for the credit card, line of credit, or loan. You may pay your dentist for treatment in another manner. Your dentist's office may offer its own payment plan. You are encouraged to explore any public or private insurance options that may cover your dental treatment.</p>
+
+        <p>Your dentist must give you an estimate of your charges, including what your insurance should cover before they ask you to apply for a credit card, line of credit, or loan. Your dentist must not charge the credit card, line of credit, or loan until you receive services or the dentist has incurred costs related to your treatment. If you are charged for services that you did not receive, notify the dentist's office as soon as possible in order to help expedite a refund.</p>
+
+        <p>The lender or creditor may offer you a "promotional period" to pay back the credit or loan without interest. AFTER ANY PROMOTIONAL PERIOD ENDS, YOU MAY OWE INTEREST ON THE REMAINING BALANCE OF THE CREDIT CARD, LINE OF CREDIT, OR AMOUNT OF THE LOAN. IF YOU MISS A PAYMENT OR DO NOT PAY ON TIME, YOU MAY HAVE TO PAY A PENALTY AND A HIGHER INTEREST RATE.</p>
+
+        <p>IF YOU DO NOT PAY THE MONEY THAT YOU OWE THE CREDITOR OR LENDER, THEN YOUR MISSED PAYMENTS CAN APPEAR ON YOUR CREDIT REPORT AND COULD HURT YOUR CREDIT SCORE. YOU COULD ALSO BE SUED.</p>
+
+        <p>You may file a complaint against a dental practice that does not follow both the requirements of this notice and the Illinois Dental Practice Act by contacting the Illinois Department of Financial and Professional Regulation (IDFPR) at <a href="http://www.IDFPR.Illinois.gov" target="_blank">www.IDFPR.Illinois.gov</a>, or by calling 312-814-6910.</p>
+
+        <p>[Patient's Signature: <span id="customerNameSpan"></span>]</p>
+        <p>[Date: <input type="date" id="date" required>]</p>
+
+        <div class="checkbox">
+            <input type="checkbox" id="acknowledge" required> 
+            <label for="acknowledge">I acknowledge that checking this box constitutes my electronic signature.</label>
+        </div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        // Load stored data from part 1
+        document.getElementById('customerNameSpan').innerText = localStorage.getItem('customerName');
+        document.getElementById('treatmentAmountSpan').innerText = localStorage.getItem('treatmentAmount');
+
+        // Auto-populate the date when checkbox is checked
+        document.getElementById('acknowledge').addEventListener('change', function() {
+            if (this.checked) {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('date').value = today;
+            } else {
+                document.getElementById('date').value = "";  // Clear the date if unchecked
+            }
+        });
+
+        function submitForm() {
+            if (document.getElementById('acknowledge').checked) {
+                alert('Form submitted successfully!');
+                localStorage.clear();
+                // Add your redirection to the application process here
+                // window.location.href = 'application.html'; 
+            } else {
+                alert('Please acknowledge by checking the box.');
+            }
+        }
+    </script>
+</body>
+</html>
