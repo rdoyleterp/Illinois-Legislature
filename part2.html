@@ -38,7 +38,7 @@
 
         <p><strong>YOU ARE APPLYING FOR A CREDIT CARD, LINE OF CREDIT, OR A LOAN FOR $<span id="treatmentAmountSpan"></span>.</strong></p>
 
-        <p>The CREDIT CARD, LINE OF CREDIT, OR LOAN YOU ARE APPLYING FOR IS NOT A PAYMENT PLAN WITH THE DENTIST'S OFFICE. It is a credit card, line of credit, or loan from Health Finance Direct. Your dentist does not work for this company.</p>
+        <p>The CREDIT CARD, LINE OF CREDIT, OR LOAN YOU ARE APPLYING FOR IS NOT A PAYMENT PLAN WITH THE DENTIST'S OFFICE. It is a credit card, line of credit, or loan from [name of company issuing the credit card, line of credit, or loan]. Your dentist does not work for this company.</p>
 
         <p>You do not have to apply for the credit card, line of credit, or loan. You may pay your dentist for treatment in another manner. Your dentist's office may offer its own payment plan. You are encouraged to explore any public or private insurance options that may cover your dental treatment.</p>
 
@@ -50,7 +50,7 @@
 
         <p>You may file a complaint against a dental practice that does not follow both the requirements of this notice and the Illinois Dental Practice Act by contacting the Illinois Department of Financial and Professional Regulation (IDFPR) at <a href="http://www.IDFPR.Illinois.gov" target="_blank">www.IDFPR.Illinois.gov</a>, or by calling 312-814-6910.</p>
 
-        <p>[Patient's Signature: <span id="customerNameSpan"></span>]</p>
+        <p>[Patient's Signature: <span id="customerFullNameSpan"></span>]</p>
         <p>[Date: <input type="date" id="date" required>]</p>
 
         <div class="checkbox">
@@ -63,7 +63,9 @@
 
     <script>
         // Load stored data from part 1
-        document.getElementById('customerNameSpan').innerText = localStorage.getItem('customerName');
+        const firstName = localStorage.getItem('firstName');
+        const lastName = localStorage.getItem('lastName');
+        document.getElementById('customerFullNameSpan').innerText = firstName + ' ' + lastName;
         document.getElementById('treatmentAmountSpan').innerText = localStorage.getItem('treatmentAmount');
 
         // Auto-populate the date when checkbox is checked
