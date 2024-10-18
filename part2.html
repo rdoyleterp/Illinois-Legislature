@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('https://netleasefinder.com/wp-content/uploads/2023/03/Heartland-Dental/testing.png');
+            background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -52,7 +52,7 @@
 
         <p><strong>YOU ARE APPLYING FOR A CREDIT CARD, LINE OF CREDIT, OR A LOAN FOR $<span id="treatmentAmountSpan"></span>.</strong></p>
 
-        <p>The CREDIT CARD, LINE OF CREDIT, OR LOAN YOU ARE APPLYING FOR IS NOT A PAYMENT PLAN WITH THE DENTIST'S OFFICE. It is a credit card, line of credit, or loan from [name of company issuing the credit card, line of credit, or loan]. Your dentist does not work for this company.</p>
+        <p>The CREDIT CARD, LINE OF CREDIT, OR LOAN YOU ARE APPLYING FOR IS NOT A PAYMENT PLAN WITH THE DENTIST'S OFFICE. It is a credit card, line of credit, or loan from CareCredit or Healthcare Finance Direct. Your dentist does not work for this company.</p>
 
         <p>You do not have to apply for the credit card, line of credit, or loan. You may pay your dentist for treatment in another manner. Your dentist's office may offer its own payment plan. You are encouraged to explore any public or private insurance options that may cover your dental treatment.</p>
 
@@ -82,15 +82,11 @@
         document.getElementById('customerFullNameSpan').innerText = firstName + ' ' + lastName;
         document.getElementById('treatmentAmountSpan').innerText = localStorage.getItem('treatmentAmount');
 
-        // Auto-populate the date when checkbox is checked
-        document.getElementById('acknowledge').addEventListener('change', function() {
-            if (this.checked) {
-                const today = new Date().toISOString().split('T')[0];
-                document.getElementById('date').innerText = today;
-            } else {
-                document.getElementById('date').innerText = "";  // Clear the date if unchecked
-            }
-        });
+        // Auto-populate the date on page load
+        window.onload = function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').innerText = today;
+        };
 
         function submitForm() {
             if (document.getElementById('acknowledge').checked) {
