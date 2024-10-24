@@ -12,16 +12,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg'); /* Replace with your image URL */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #f7f7f7;
         }
         .form-container {
             max-width: 600px;
             padding: 20px;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -31,17 +28,39 @@
             width: 100%;
         }
         button {
-            display: inline-block;
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
         }
         p.instructions {
             font-size: 16px;
             margin-bottom: 20px;
+        }
+        .question-label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .btn-option {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-option.selected {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -61,23 +80,48 @@
             <label for="treatmentAmount">Treatment Amount (in USD):</label>
             <input type="number" id="treatmentAmount" name="treatmentAmount" required min="0" step="0.01">
 
+            <label class="question-label">Does the treatment you are financing contain orthodontics? (Invisalign)</label>
+            <div class="btn-group">
+                <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')">Yes</button>
+                <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
+            </div>
+
             <button type="button" onclick="goToPart2()">Next</button>
         </form>
     </div>
 
     <script>
+        let selectedOption = '';
+
+        function selectOption(option) {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+
+            if (option === 'yes') {
+                selectedOption = 'yes';
+                yesBtn.classList.add('selected');
+                noBtn.classList.remove('selected');
+            } else {
+                selectedOption = 'no';
+                noBtn.classList.add('selected');
+                yesBtn.classList.remove('selected');
+            }
+
+            localStorage.setItem('orthodontics', selectedOption);
+        }
+
         function goToPart2() {
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const treatmentAmount = document.getElementById('treatmentAmount').value;
 
-            if (firstName && lastName && treatmentAmount) {
+            if (firstName && lastName && treatmentAmount && selectedOption) {
                 localStorage.setItem('firstName', firstName);
                 localStorage.setItem('lastName', lastName);
                 localStorage.setItem('treatmentAmount', treatmentAmount);
                 window.location.href = 'part2.html';
             } else {
-                alert('Please fill out all fields.');
+                alert('Please fill out all fields and select Yes or No for orthodontics.');
             }
         }
     </script>
