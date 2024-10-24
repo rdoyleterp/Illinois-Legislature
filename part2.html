@@ -23,10 +23,15 @@
             padding: 20px;
             margin: 20px;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 14pt; /* Set font to 14pt */
+            font-size: 14pt;
             line-height: 1.5;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24pt;
+            font-weight: bold;
         }
         p {
             margin-bottom: 10px;
@@ -37,7 +42,6 @@
             text-align: left;
         }
         button {
-            display: inline-block;
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
@@ -45,11 +49,17 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
+            position: absolute;
+            right: 20px; /* Align the button to the right */
+            bottom: 20px; /* Align the button to the bottom */
         }
         #date {
             border: none;
             background-color: transparent;
             cursor: default;
+        }
+        .signature, .date {
+            font-weight: bold; /* Bold styling for Patient's Signature and Date */
         }
 
         /* Responsive Design */
@@ -68,12 +78,15 @@
             button {
                 width: 100%;
                 padding: 12px;
+                position: static; /* Stack the button normally in mobile view */
+                margin-top: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="disclosure-container">
+        <h1>Disclosure</h1>
         <p>The application you are about to fill out is your application for a credit card, line of credit, or loan to help you finance or pay for your dental treatment. You should know that:</p>
 
         <p>You are applying for a credit card, line of credit, or a loan for $<span id="treatmentAmountSpan"></span>.</p>
@@ -90,8 +103,8 @@
 
         <p>You may file a complaint against a dental practice that does not follow both the requirements of this notice and the Illinois Dental Practice Act by contacting the Illinois Department of Financial and Professional Regulation (IDFPR) at <a href="http://www.IDFPR.Illinois.gov" target="_blank">www.IDFPR.Illinois.gov</a>, or by calling 312-814-6910.</p>
 
-        <p>Patient's Signature: <span id="customerFullNameSpan"></span></p>
-        <p>Date: <span id="date"></span></p>
+        <p class="signature">Patient's Signature: <span id="customerFullNameSpan"></span></p>
+        <p class="date">Date: <span id="date"></span></p>
 
         <div class="checkbox">
             <input type="checkbox" id="acknowledge" required> 
@@ -124,6 +137,9 @@
                 alert('Please acknowledge by checking the box.');
             }
         }
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
