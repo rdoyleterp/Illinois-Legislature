@@ -8,25 +8,33 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100vh;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
             background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
         .disclosure-container {
-            max-width: 600px;
+            max-width: 800px;
             padding: 20px;
+            margin: 20px;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.9); 
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            font-size: 14pt; /* Set font to 14pt */
+            line-height: 1.5;
+        }
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
         }
         .checkbox {
             margin-top: 20px;
+            text-align: left;
         }
         button {
             display: inline-block;
@@ -43,24 +51,42 @@
             background-color: transparent;
             cursor: default;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .disclosure-container {
+                max-width: 90%;
+                margin: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .disclosure-container {
+                max-width: 95%;
+                margin: 10px;
+                padding: 15px;
+            }
+            button {
+                width: 100%;
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="disclosure-container">
-        <h2>DENTAL SERVICES FINANCING DISCLOSURE</h2>
-        <p>The application you are about to fill out is your application for a CREDIT CARD, LINE OF CREDIT, OR LOAN to help you finance or pay for your dental treatment. You should know that:</p>
+        <p>The application you are about to fill out is your application for a credit card, line of credit, or loan to help you finance or pay for your dental treatment. You should know that:</p>
 
-        <p><strong>YOU ARE APPLYING FOR A CREDIT CARD, LINE OF CREDIT, OR A LOAN FOR $<span id="treatmentAmountSpan"></span>.</strong></p>
+        <p>You are applying for a credit card, line of credit, or a loan for $<span id="treatmentAmountSpan"></span>.</p>
 
-        <p>The CREDIT CARD, LINE OF CREDIT, OR LOAN YOU ARE APPLYING FOR IS NOT A PAYMENT PLAN WITH THE DENTIST'S OFFICE. It is a credit card, line of credit, or loan from CareCredit or Healthcare Finance Direct. Your dentist does not work for this company.</p>
+        <p>The credit card, line of credit, or loan you are applying for is not a payment plan with the dentist's office. It is a credit card, line of credit, or loan from [name of company issuing the credit card, line of credit, or loan]. Your dentist does not work for this company.</p>
 
         <p>You do not have to apply for the credit card, line of credit, or loan. You may pay your dentist for treatment in another manner. Your dentist's office may offer its own payment plan. You are encouraged to explore any public or private insurance options that may cover your dental treatment.</p>
 
         <p>Your dentist must give you an estimate of your charges, including what your insurance should cover before they ask you to apply for a credit card, line of credit, or loan. Your dentist must not charge the credit card, line of credit, or loan until you receive services or the dentist has incurred costs related to your treatment. If you are charged for services that you did not receive, notify the dentist's office as soon as possible in order to help expedite a refund.</p>
 
-        <p>The lender or creditor may offer you a "promotional period" to pay back the credit or loan without interest. AFTER ANY PROMOTIONAL PERIOD ENDS, YOU MAY OWE INTEREST ON THE REMAINING BALANCE OF THE CREDIT CARD, LINE OF CREDIT, OR AMOUNT OF THE LOAN. IF YOU MISS A PAYMENT OR DO NOT PAY ON TIME, YOU MAY HAVE TO PAY A PENALTY AND A HIGHER INTEREST RATE.</p>
+        <p>The lender or creditor may offer you a "promotional period" to pay back the credit or loan without interest. After any promotional period ends, you may owe interest on the remaining balance of the credit card, line of credit, or amount of the loan. If you miss a payment or do not pay on time, you may have to pay a penalty and a higher interest rate.</p>
 
-        <p>IF YOU DO NOT PAY THE MONEY THAT YOU OWE THE CREDITOR OR LENDER, THEN YOUR MISSED PAYMENTS CAN APPEAR ON YOUR CREDIT REPORT AND COULD HURT YOUR CREDIT SCORE. YOU COULD ALSO BE SUED.</p>
+        <p>If you do not pay the money that you owe the creditor or lender, then your missed payments can appear on your credit report and could hurt your credit score. You could also be sued.</p>
 
         <p>You may file a complaint against a dental practice that does not follow both the requirements of this notice and the Illinois Dental Practice Act by contacting the Illinois Department of Financial and Professional Regulation (IDFPR) at <a href="http://www.IDFPR.Illinois.gov" target="_blank">www.IDFPR.Illinois.gov</a>, or by calling 312-814-6910.</p>
 
