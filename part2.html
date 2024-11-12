@@ -106,7 +106,6 @@
         const firstName = localStorage.getItem('firstName');
         const lastName = localStorage.getItem('lastName');
         document.getElementById('customerFullNameSpan').innerText = firstName + ' ' + lastName;
-        document.getElementById('treatmentAmountSpan').innerText = localStorage.getItem('treatmentAmount');
 
         // Auto-populate the date on page load
         window.onload = function() {
