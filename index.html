@@ -71,7 +71,7 @@
     <div class="form-container">
         <h2>Before you Apply</h2>
         <p class="instructions">
-            Please provide your First and last name in the fields below. For the treatment amount, please include the amount being requested for financing. Speak with an office team member if you need help determining this amount.
+            Enter your first and last name and the dollar amount of treatment to be financed.
         </p>
         <form id="form1">
             <label for="firstName">First Name:</label>
@@ -80,10 +80,10 @@
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName" required>
 
-            <label for="treatmentAmount">Treatment Amount (in USD):</label>
+            <label for="treatmentAmount">Dollar Amount of Treatment to be Financed (in USD):</label>
             <input type="number" id="treatmentAmount" name="treatmentAmount" required min="0" step="0.01">
 
-            <label class="question-label">Does this treatment contain Orthodontics or Invisalign?</label>
+            <label class="question-label">Does the treatment to be financed contain Orthodontics (Braces) or Invisalign (Clear Aligner Therapy)?</label>
             <div class="btn-group">
                 <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')">Yes</button>
                 <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
