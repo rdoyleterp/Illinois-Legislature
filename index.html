@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg'); /* Replace with your image URL */
+            background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -39,6 +39,9 @@
             cursor: pointer;
             margin-top: 20px;
         }
+        button:hover {
+            background-color: #0056b3;
+        }
         p.instructions {
             font-size: 16px;
             margin-bottom: 20px;
@@ -62,6 +65,9 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+        .btn-option:hover {
+            background-color: #0056b3;
+        }
         .btn-option.selected {
             background-color: #0056b3;
         }
@@ -81,12 +87,12 @@
             <input type="text" id="lastName" name="lastName" required>
 
             <label for="treatmentAmount">Dollar Amount of Treatment to be Financed (in USD):</label>
-            <input type="number" id="treatmentAmount" name="treatmentAmount" required min="0" step="0.01">
+            <input type="number" id="treatmentAmount" name="treatmentAmount" required min="0.01" step="0.01">
 
             <label class="question-label">Does the treatment to be financed contain Orthodontics (Braces) or Invisalign (Clear Aligner Therapy)?</label>
             <div class="btn-group">
-                <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')">Yes</button>
-                <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
+                <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')" aria-pressed="false">Yes</button>
+                <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')" aria-pressed="false">No</button>
             </div>
 
             <button type="button" onclick="goToPart2()">Next</button>
@@ -104,10 +110,14 @@
                 selectedOption = 'yes';
                 yesBtn.classList.add('selected');
                 noBtn.classList.remove('selected');
+                yesBtn.setAttribute('aria-pressed', 'true');
+                noBtn.setAttribute('aria-pressed', 'false');
             } else {
                 selectedOption = 'no';
                 noBtn.classList.add('selected');
                 yesBtn.classList.remove('selected');
+                noBtn.setAttribute('aria-pressed', 'true');
+                yesBtn.setAttribute('aria-pressed', 'false');
             }
 
             localStorage.setItem('orthodontics', selectedOption);
@@ -118,14 +128,20 @@
             const lastName = document.getElementById('lastName').value;
             const treatmentAmount = document.getElementById('treatmentAmount').value;
 
-            if (firstName && lastName && treatmentAmount && selectedOption) {
-                localStorage.setItem('firstName', firstName);
-                localStorage.setItem('lastName', lastName);
-                localStorage.setItem('treatmentAmount', treatmentAmount);
-                window.location.href = 'part2.html';
-            } else {
-                alert('Please fill out all fields and select Yes or No for orthodontics.');
+            if (!firstName || !lastName || !treatmentAmount || treatmentAmount <= 0) {
+                alert('Please enter a valid name and treatment amount.');
+                return;
             }
+
+            if (!selectedOption) {
+                alert('Please select Yes or No for orthodontics.');
+                return;
+            }
+
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('treatmentAmount', treatmentAmount);
+            window.location.href = 'part2.html';
         }
     </script>
 </body>
