@@ -10,7 +10,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg');
             background-size: cover;
@@ -18,49 +18,47 @@
             background-repeat: no-repeat;
         }
         .form-container {
-            max-width: 600px;
+            width: 100%;
+            max-width: 800px;
             padding: 20px;
-            border-radius: 5px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
-        label {
-            display: inline-block;
-            width: 40%; /* Align labels to the right */
-            text-align: right;
-            margin-right: 10px;
-        }
-        input {
-            width: 50%; /* Reduce input field width */
-            padding: 5px;
-            margin-bottom: 10px;
+        h2, p.instructions {
+            text-align: center;
+            margin: 0 0 20px;
         }
         .input-group {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
-        button {
-            padding: 10px 20px;
-            color: white;
-            border: none;
+        label {
+            font-size: 14pt;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
         }
-        button:hover {
-            opacity: 0.9;
+        .question-label {
+            font-size: 16px;
+            text-align: center;
+            margin: 30px 0 15px;
         }
-        button.next {
-            background-color: #ffc107; /* Gold color for the Next button */
-            color: black;
-        }
-        button.next:hover {
-            background-color: #e0a800;
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
         .btn-option {
             padding: 10px 20px;
-            background-color: #004080; /* Darker blue for Yes/No buttons */
+            background-color: #004080;
             color: white;
             border: none;
             border-radius: 5px;
@@ -73,21 +71,20 @@
         .btn-option.selected {
             background-color: #002850;
         }
-        p.instructions {
-            font-size: 16px;
-            margin-bottom: 20px;
-            text-align: center;
+        button.next {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #ffc107;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .question-label {
-            font-size: 16px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+        button.next:hover {
+            background-color: #e0a800;
         }
     </style>
 </head>
@@ -118,10 +115,10 @@
                 <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')">Yes</button>
                 <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
             </div>
-
-            <button type="button" class="next" onclick="goToPart2()">Next</button>
         </form>
     </div>
+
+    <button type="button" class="next" onclick="goToPart2()">Next</button>
 
     <script>
         let selectedOption = '';
