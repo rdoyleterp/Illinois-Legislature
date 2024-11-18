@@ -23,16 +23,25 @@
             border-radius: 5px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
-        label, input {
-            display: block;
+        label {
+            display: inline-block;
+            width: 40%; /* Align labels to the right */
+            text-align: right;
+            margin-right: 10px;
+        }
+        input {
+            width: 50%; /* Reduce input field width */
+            padding: 5px;
             margin-bottom: 10px;
-            width: 100%;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
         button {
             padding: 10px 20px;
-            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
@@ -40,25 +49,18 @@
             margin-top: 20px;
         }
         button:hover {
-            background-color: #0056b3;
+            opacity: 0.9;
         }
-        p.instructions {
-            font-size: 16px;
-            margin-bottom: 20px;
+        button.next {
+            background-color: #ffc107; /* Gold color for the Next button */
+            color: black;
         }
-        .question-label {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+        button.next:hover {
+            background-color: #e0a800;
         }
         .btn-option {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #004080; /* Darker blue for Yes/No buttons */
             color: white;
             border: none;
             border-radius: 5px;
@@ -66,10 +68,26 @@
             transition: background-color 0.3s;
         }
         .btn-option:hover {
-            background-color: #0056b3;
+            background-color: #003060;
         }
         .btn-option.selected {
-            background-color: #0056b3;
+            background-color: #002850;
+        }
+        p.instructions {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .question-label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -80,22 +98,28 @@
             Enter your first and last name and the dollar amount of treatment to be financed.
         </p>
         <form id="form1">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <div class="input-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
 
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <div class="input-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
 
-            <label for="treatmentAmount">Dollar Amount of Treatment to be Financed (in USD):</label>
-            <input type="number" id="treatmentAmount" name="treatmentAmount" required min="0.01" step="0.01">
+            <div class="input-group">
+                <label for="treatmentAmount">Treatment Amount (USD):</label>
+                <input type="number" id="treatmentAmount" name="treatmentAmount" required min="0.01" step="0.01">
+            </div>
 
             <label class="question-label">Does the treatment to be financed contain Orthodontics (Braces) or Invisalign (Clear Aligner Therapy)?</label>
             <div class="btn-group">
-                <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')" aria-pressed="false">Yes</button>
-                <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')" aria-pressed="false">No</button>
+                <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')">Yes</button>
+                <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
             </div>
 
-            <button type="button" onclick="goToPart2()">Next</button>
+            <button type="button" class="next" onclick="goToPart2()">Next</button>
         </form>
     </div>
 
@@ -110,14 +134,10 @@
                 selectedOption = 'yes';
                 yesBtn.classList.add('selected');
                 noBtn.classList.remove('selected');
-                yesBtn.setAttribute('aria-pressed', 'true');
-                noBtn.setAttribute('aria-pressed', 'false');
             } else {
                 selectedOption = 'no';
                 noBtn.classList.add('selected');
                 yesBtn.classList.remove('selected');
-                noBtn.setAttribute('aria-pressed', 'true');
-                yesBtn.setAttribute('aria-pressed', 'false');
             }
 
             localStorage.setItem('orthodontics', selectedOption);
