@@ -19,7 +19,7 @@
         }
         .form-container {
             width: 100%;
-            max-width: 500px; /* Reduced the width to minimize empty space */
+            max-width: 500px;
             padding: 20px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -71,10 +71,12 @@
         .btn-option.selected {
             background-color: #002850;
         }
+        .form-footer {
+            display: flex;
+            justify-content: flex-end; /* Aligns the button to the right */
+            margin-top: 20px; /* Adds space above the button */
+        }
         button.next {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
             padding: 10px 20px;
             background-color: #ffc107;
             color: black;
@@ -116,7 +118,9 @@
                 <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
             </div>
 
-            <button type="button" class="next" onclick="goToPart2()">Next</button>
+            <div class="form-footer">
+                <button type="button" class="next" onclick="goToPart2()">Next</button>
+            </div>
         </form>
     </div>
 
