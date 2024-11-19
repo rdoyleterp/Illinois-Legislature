@@ -10,7 +10,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             background-image: url('https://apply-next-demo.versatilecredit.com/elective-medical/assets/merchant-intro-bg-BhQUjAc7.jpg');
             background-size: cover;
@@ -19,7 +19,7 @@
         }
         .form-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 500px; /* Reduced the width to minimize empty space */
             padding: 20px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -72,9 +72,7 @@
             background-color: #002850;
         }
         button.next {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+            margin-top: 20px;
             padding: 10px 20px;
             background-color: #ffc107;
             color: black;
@@ -115,10 +113,10 @@
                 <button type="button" class="btn-option" id="yesBtn" onclick="selectOption('yes')">Yes</button>
                 <button type="button" class="btn-option" id="noBtn" onclick="selectOption('no')">No</button>
             </div>
+
+            <button type="button" class="next" onclick="goToPart2()">Next</button>
         </form>
     </div>
-
-    <button type="button" class="next" onclick="goToPart2()">Next</button>
 
     <script>
         let selectedOption = '';
